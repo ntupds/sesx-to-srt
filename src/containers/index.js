@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import FileInput from '../components/FileInput';
-import * as counterActions from '../actions/counterActions';
+import * as fileInputActions from '../actions/fileInputActions';
 import { connect } from 'react-redux';
 
 class App extends Component {
@@ -18,9 +18,9 @@ class App extends Component {
 }
 
 export default connect(state => ({
-    state: state.counter
+    state: state.fileInputReducer
   }),
   (dispatch) => ({
-    actions: bindActionCreators(counterActions, dispatch)
+    actions: bindActionCreators(fileInputActions, dispatch)
   })
 )(App);

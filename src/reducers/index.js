@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import counter from './counter';
+import fileInputReducer from './fileInputReducer';
 
 export default combineReducers({
-  counter
+  fileInputReducer
 });
