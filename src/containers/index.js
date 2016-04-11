@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import FileInput from '../components/FileInput';
-import * as fileInputActions from '../actions/fileInputActions';
 import { connect } from 'react-redux';
+
+import FileInput from '../components/FileInput';
+import SrtPreviewer from '../components/SrtPreviewer';
+
+import * as fileInputActions from '../actions/fileInputActions';
 
 class App extends Component {
   constructor(props) {
@@ -12,7 +15,10 @@ class App extends Component {
   render() {
     const { state, actions } = this.props;
     return (
-      <FileInput loadFile={actions.loadFile} />
+      <div>
+        <FileInput loadFile={actions.loadFile} />
+        <SrtPreviewer />
+      </div>
     );
   }
 }
