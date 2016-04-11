@@ -1,6 +1,6 @@
 import * as types from './actionTypes';
 
-export function load_file(content) {
+export function loadFile(content) {
   return {
     type: types.LOAD_FILE,
     content

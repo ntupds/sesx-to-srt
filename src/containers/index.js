@@ -12,7 +12,7 @@ class App extends Component {
   render() {
     const { state, actions } = this.props;
     return (
-      <FileInput />
+      <FileInput loadFile={actions.loadFile} />
     );
   }
 }

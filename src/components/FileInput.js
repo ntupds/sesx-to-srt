@@ -8,11 +8,12 @@ export default class FileInput extends Component {
   }
 
   onDrop(files){
+    let loadFile = this.props.loadFile;
     files.forEach((file) => {
       let r = new FileReader();
       r.onload = function(e) {
         parseString(e.target.result, function (err, result) {
-          console.log(JSON.stringify(result));
+          loadFile(JSON.stringify(result));
         });
       }
       r.readAsText(file);
@@ -20,7 +21,7 @@ export default class FileInput extends Component {
   }
 
   render() {
-    const { counter, increment, decrement } = this.props;
+    const { loadFile } = this.props;
 
     return (
       <div>
