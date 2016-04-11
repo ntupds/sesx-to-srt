@@ -1,0 +1,61 @@
+{
+  "name": "aup-to-srt",
+  "productName": "NTUPDS aup to srt",
+  "version": "0.1.0",
+  "description": "Generate a srt file from aup file.  This is an app designed for NTUPDS.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node devServer.js",
+    "test": "jest",
+    "clean": "rimraf dist",
+    "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
+    "build": "npm run clean && npm run build:webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erwaiyang/aup-to-srt-for-NTUPDS.git"
+  },
+  "author": {
+    "name": "erwaiyang(慕羽)",
+    "email": "bdlas321@gmail.com",
+    "url": "https://github.com/erwaiyang"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/erwaiyang/aup-to-srt-for-NTUPDS/issues"
+  },
+  "homepage": "https://github.com/erwaiyang/aup-to-srt-for-NTUPDS#readme",
+  "devDependencies": {
+    "babel-core": "^6.6.5",
+    "babel-jest": "^9.0.3",
+    "babel-loader": "^6.2.4",
+    "babel-polyfill": "^6.7.4",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-react-hmre": "^1.1.1",
+    "cross-env": "^1.0.7",
+    "css-loader": "^0.23.1",
+    "eventsource-polyfill": "^0.9.6",
+    "express": "^4.13.3",
+    "jest-cli": "^0.9.2",
+    "node-sass": "^3.4.2",
+    "react-addons-test-utils": "^15.0.0",
+    "rimraf": "^2.4.3",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.9",
+    "webpack-dev-middleware": "^1.4.0",
+    "webpack-hot-middleware": "^2.9.1"
+  },
+  "dependencies": {
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0",
+    "react-redux": "^4.4.1",
+    "redux": "^3.3.1"
+  },
+  "jest": {
+    "unmockedModulePathPatterns": [
+      "react"
+    ]
+  }
+}
