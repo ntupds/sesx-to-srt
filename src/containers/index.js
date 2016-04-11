@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import Counter from '../components/Counter';
+import FileInput from '../components/FileInput';
 import * as counterActions from '../actions/counterActions';
 import { connect } from 'react-redux';
 
-class CounterApp extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
   }
@@ -12,9 +12,7 @@ class CounterApp extends Component {
   render() {
     const { state, actions } = this.props;
     return (
-      <Counter
-        counter={state.count}
-        {...actions} />
+      <FileInput />
     );
   }
 }
@@ -25,4 +23,4 @@ export default connect(state => ({
   (dispatch) => ({
     actions: bindActionCreators(counterActions, dispatch)
   })
-)(CounterApp);
+)(App);
