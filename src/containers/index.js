@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import FileInput from '../components/FileInput';
+import Steps from '../components/Steps';
 import SrtPreviewer from '../components/SrtPreviewer';
 
 import * as fileInputActions from '../actions/fileInputActions';
@@ -16,8 +17,8 @@ class App extends Component {
     const { state, actions } = this.props;
     return (
       <div>
+        <Steps />
         <FileInput loadFile={actions.loadFile} />
-        <SrtPreviewer />
       </div>
     );
   }

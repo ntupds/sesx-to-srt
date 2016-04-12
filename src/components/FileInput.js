@@ -50,20 +50,10 @@ export default class FileInput extends Component {
         <Dropzone id="dropzone" style={{width: '100%'}} accept="application/x-aup" multiple={false} onDrop={this.onDrop.bind(this)}>
           <div>點擊以選擇檔案或直接拖曳至此</div>
         </Dropzone>
-        <Motion defaultStyle={{x: 0}} style={{x: spring(this.state.progress)}}>
-        { (motionStyle) => {
-            return(
-              <div id="myProgress">
-                <div id="progressBar" style={{width:motionStyle.x+'%'}}>
-                  <div id="progressLabel">
-                    {self.state.progress} %
-                  </div>
-                </div>
-              </div>
-            );
-          }
-        }
-        </Motion>
+        <div className="ui progress" data-percent={this.state.progress}>
+          <div className="bar" style={{width: this.state.progress +'%'}}></div>
+          <div className="label">{this.state.progress}%</div>
+        </div>
       </div>
     );
   }
