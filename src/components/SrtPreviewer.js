@@ -7,31 +7,28 @@ export default class SrtPreviewer extends Component {
   }
 
   componentDidMount(){
-
-  }
-
-  renderRows(content, selectedTracks){
-    const contentObject = JSON.parse(content);
+    const contentObject = JSON.parse(this.props.content);
     const wavetrackArray = contentObject.project.wavetrack;
     const filteredArray = wavetrackArray.filter((object, index)=>{
-      return selectedTracks[index];
+      return this.props.selectedTracks[index];
     });
+    this.props.makeSrt(filteredArray);
+  }
 
-    let subtitleIndex = 0;
 
-    return filteredArray.map( (wavetrack, wIndex) =>
+
+  renderRows(subtitlesArray){
+
+    return subtitlesArray.map( (subtitle, index) =>
       {
-        return wavetrack.waveclip.map( (clip, cIndex) => {
-          subtitleIndex++;
-          return (
-            <tr>
-              <td>{subtitleIndex}</td>
-              <td>{srtTimecodeParser(clip["$"].offset)}</td>
-              <td>{ srtTimecodeParser(parseFloat(clip["$"].offset) + parseFloat(clip.sequence[0]["$"].numsamples / wavetrack["$"].rate))}</td>
-              <td>{wavetrack["$"].name}{cIndex+1}</td>
-            </tr>
-            );
-        });
+        return (
+          <tr key={index}>
+            <td>{index+1}</td>
+            <td>{subtitle.srtStartTimecode}</td>
+            <td>{subtitle.srtEndTimecode}</td>
+            <td>{subtitle.defaultTag}</td>
+          </tr>
+          );
       }
     );
 
@@ -54,7 +51,7 @@ export default class SrtPreviewer extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.renderRows(this.props.content, this.props.selectedTracks)}
+            {this.renderRows(this.props.subtitles)}
           </tbody>
         </table>
       </div>

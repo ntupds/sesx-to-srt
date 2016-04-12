@@ -13,3 +13,10 @@ export function selectTracks(selectedTracks) {
     selectedTracks
   };
 }
+
+export function makeSrt(filteredArray) {
+  return {
+    type: types.MAKE_SRT,
+    filteredArray
+  }
+}
