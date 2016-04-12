@@ -6,3 +6,10 @@ export function loadFile(content) {
     content
   };
 }
+
+export function selectTracks(selectedTracks) {
+  return {
+    type: types.SELECT_TRACKS,
+    selectedTracks
+  };
+}

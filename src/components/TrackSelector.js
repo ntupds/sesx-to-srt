@@ -3,15 +3,22 @@ import React, { Component } from 'react';
 export default class TrackSelector extends Component {
   constructor(props){
     super(props);
-    const contentObject = JSON.parse(props.content);
-    const tracks = contentObject.project.wavetrack.length;
-    const checkedBoxes = [];
-    for(var i = 0; i<tracks; i++){
-      checkedBoxes.push( (i%2===0)? true : false );
+    if(props.selectedTracks.length>0){
+      this.state = {
+        checkedBoxes: props.selectedTracks
+      };
+    }else{
+      const contentObject = JSON.parse(props.content);
+      const tracks = contentObject.project.wavetrack.length;
+      const checkedBoxes = [];
+      for(var i = 0; i<tracks; i++){
+        checkedBoxes.push( (i%2===0)? true : false );
+      }
+      this.state = {
+        checkedBoxes
+      };
+      props.selectTracks(checkedBoxes);
     }
-    this.state = {
-      checkedBoxes
-    };
   }
 
   onCheckboxChange(index){
@@ -20,6 +27,7 @@ export default class TrackSelector extends Component {
     this.setState({
       checkedBoxes: changedCheckedBoxes
     });
+    this.props.selectTracks(changedCheckedBoxes);
   }
 
   renderTracks(content){
