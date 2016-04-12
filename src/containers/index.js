@@ -34,7 +34,7 @@ class App extends Component {
     const { state } = this.props;
     return (
       <div>
-        <Steps />
+        <Steps step={state.stepReducer.step} />
         {this.renderContent(state.stepReducer.step)}
       </div>
     );
