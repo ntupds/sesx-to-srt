@@ -32,8 +32,8 @@ function makeSrt(filteredArray){
     {
       wavetrack.waveclip.map( (clip, cIndex) => {
         let subtitle = {};
-        
-        subtitle.aupStartTimecode = clip["$"].offset;
+
+        subtitle.aupStartTimecode = parseFloat(clip["$"].offset);
         subtitle.srtStartTimecode = srtTimecodeParser(clip["$"].offset);
         subtitle.aupEndTimecode = parseFloat(clip["$"].offset) + parseFloat(clip.sequence[0]["$"].numsamples / wavetrack["$"].rate);
         subtitle.srtEndTimecode = srtTimecodeParser(subtitle.aupEndTimecode);
@@ -42,5 +42,12 @@ function makeSrt(filteredArray){
         subtitlesArray.push(subtitle);
       });
   });
-  return subtitlesArray;
+  return subtitlesArray.sort((a,b) => {
+    if (a.aupStartTimecode < b.aupStartTimecode)
+      return -1;
+    else if (a.aupStartTimecode > b.aupStartTimecode)
+      return 1;
+    else
+    return 0;
+  });
 }
