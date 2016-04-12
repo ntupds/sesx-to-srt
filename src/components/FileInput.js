@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
 import { parseString } from 'xml2js';
-import { Motion, spring } from 'react-motion';
 
 export default class FileInput extends Component {
   constructor(props) {
@@ -37,7 +36,7 @@ export default class FileInput extends Component {
       reader.onloadend = (e) => {
         self.setState({
           progress: 100
-        });    
+        });
         self.props.changeStep(2);
       }
       reader.readAsText(file);
