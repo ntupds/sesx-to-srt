@@ -7,13 +7,11 @@ import Steps from '../components/Steps';
 import SrtPreviewer from '../components/SrtPreviewer';
 
 import * as fileInputActions from '../actions/fileInputActions';
+import * as stepActions from '../actions/stepActions';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      step: 1
-    };
   }
 
   renderContent(step){
@@ -26,27 +24,28 @@ class App extends Component {
         break;
       case 1:
       default:
-        return <FileInput loadFile={this.props.actions.loadFile} />;
+        return <FileInput loadFile={this.props.fileActions.loadFile} />;
         break;
 
     }
   }
 
   render() {
-    const { state, actions } = this.props;
+    const { state } = this.props;
     return (
       <div>
         <Steps />
-        {this.renderContent(this.state.step)}
+        {this.renderContent(state.stepReducer.step)}
       </div>
     );
   }
 }
 
 export default connect(state => ({
-    state: state.fileInputReducer
+    state: state
   }),
   (dispatch) => ({
-    actions: bindActionCreators(fileInputActions, dispatch)
+    fileActions: bindActionCreators(fileInputActions, dispatch),
+    stepActions: bindActionCreators(stepActions, dispatch)
   })
 )(App);
