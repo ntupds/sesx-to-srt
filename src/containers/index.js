@@ -35,7 +35,9 @@ class App extends Component {
     return (
       <div>
         <Steps step={state.stepReducer.step} changeStep={this.props.stepActions.changeStep} />
-        {this.renderContent(state)}
+        <div className="ui container">
+          {this.renderContent(state)}
+        </div>
       </div>
     );
   }
