@@ -1,3 +1,5 @@
+$pimary-color: #4C98CA;
+
 body{
 	height: 100%;
 }
@@ -7,4 +9,8 @@ body{
 	height: 300px;
 	border: 3px;
 	border-style: dotted;
+}
+
+#progressBar{
+	background-color: $pimary-color;
 }

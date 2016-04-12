@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
 import { parseString } from 'xml2js';
+import { Motion, spring } from 'react-motion';
 
 export default class FileInput extends Component {
   constructor(props) {
@@ -29,7 +30,7 @@ export default class FileInput extends Component {
       reader.onprogress = (e) => {
         if(e.lengthComputable){
           self.setState({
-            progress: (e.loaded / e.total)
+            progress: Math.round( (e.loaded / e.total) * 100 )
           });
         }
       }
@@ -43,14 +44,26 @@ export default class FileInput extends Component {
   }
 
   render() {
-    const { loadFile } = this.props;
-
+    let self = this;
     return (
       <div>
         <Dropzone id="dropzone" style={{width: '100%'}} accept="application/x-aup" multiple={false} onDrop={this.onDrop.bind(this)}>
           <div>點擊以選擇檔案或直接拖曳至此</div>
         </Dropzone>
-        <div>{this.state.progress}</div>
+        <Motion defaultStyle={{x: 0}} style={{x: spring(this.state.progress)}}>
+        { (motionStyle) => {
+            return(
+              <div id="myProgress">
+                <div id="progressBar" style={{width:motionStyle.x+'%'}}>
+                  <div id="progressLabel">
+                    {self.state.progress} %
+                  </div>
+                </div>
+              </div>
+            );
+          }
+        }
+        </Motion>
       </div>
     );
   }
