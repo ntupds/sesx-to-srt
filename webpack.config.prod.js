@@ -32,6 +32,9 @@ module.exports = {
       test: /\.js$/,
       loaders: ['babel'],
       include: path.join(__dirname, 'src')
+    }, {
+      test: /\.(woff2|ttf|eot|woff|svg)$/,
+      loaders: ['file']
     }]
   }
 };
