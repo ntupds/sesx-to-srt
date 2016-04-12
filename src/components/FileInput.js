@@ -44,16 +44,18 @@ export default class FileInput extends Component {
   }
 
   render() {
-    let self = this;
     return (
-      <div>
-        <Dropzone id="dropzone" style={{width: '100%'}} accept="application/x-aup" multiple={false} onDrop={this.onDrop.bind(this)}>
-          <div>點擊以選擇檔案或直接拖曳至此</div>
-        </Dropzone>
+      <div id="fileInput">
         <div className="ui progress" data-percent={this.state.progress}>
-          <div className="bar" style={{width: this.state.progress +'%'}}></div>
-          <div className="label">{this.state.progress}%</div>
+          <div className="bar" style={{width: this.state.progress +'%'}}>
+            <div className="progress">{this.state.progress}%</div>
+          </div>
         </div>
+        <Dropzone id="dropzone" style={{width: '100%'}} accept="application/x-aup" multiple={false} onDrop={this.onDrop.bind(this)}>
+          <div>
+            <span>點擊以選擇檔案或直接拖曳至此</span>
+          </div>
+        </Dropzone>
       </div>
     );
   }

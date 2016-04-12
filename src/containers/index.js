@@ -11,6 +11,25 @@ import * as fileInputActions from '../actions/fileInputActions';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      step: 1
+    };
+  }
+
+  renderContent(step){
+    switch (step) {
+      case 2:
+        return <div>step2</div>
+        break;
+      case 3:
+        return <div>step3</div>
+        break;
+      case 1:
+      default:
+        return <FileInput loadFile={this.props.actions.loadFile} />;
+        break;
+
+    }
   }
 
   render() {
@@ -18,7 +37,7 @@ class App extends Component {
     return (
       <div>
         <Steps />
-        <FileInput loadFile={actions.loadFile} />
+        {this.renderContent(this.state.step)}
       </div>
     );
   }
