@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import FileInput from '../components/FileInput';
 import Steps from '../components/Steps';
+import FileInput from '../components/FileInput';
+import TrackSelector from '../components/TrackSelector';
 import SrtPreviewer from '../components/SrtPreviewer';
 
 import * as fileInputActions from '../actions/fileInputActions';
@@ -17,10 +18,10 @@ class App extends Component {
   renderContent(step){
     switch (step) {
       case 2:
-        return <div>step2</div>
+        return <TrackSelector />;
         break;
       case 3:
-        return <div>step3</div>
+        return <SrtPreviewer />;
         break;
       case 1:
       default:
