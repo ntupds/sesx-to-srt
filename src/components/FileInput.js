@@ -37,7 +37,8 @@ export default class FileInput extends Component {
       reader.onloadend = (e) => {
         self.setState({
           progress: 100
-        });
+        });    
+        self.props.changeStep(2);
       }
       reader.readAsText(file);
     });

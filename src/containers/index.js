@@ -24,7 +24,7 @@ class App extends Component {
         break;
       case 1:
       default:
-        return <FileInput loadFile={this.props.fileActions.loadFile} />;
+        return <FileInput changeStep={this.props.stepActions.changeStep} loadFile={this.props.fileActions.loadFile} />;
         break;
 
     }
