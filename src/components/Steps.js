@@ -37,10 +37,33 @@ export default class Steps extends Component {
     });
   }
 
-  render(){
+  renderButtons(step){
+    let disabledPrevious = (step===1)? true : false;
+    let disabledNext = (step===3)? true : false;
     return(
-      <div className="ui ordered steps">
-        {this.renderSteps(this.props.step)}
+      <div>
+      <button className="ui left labeled icon button" disabled={disabledPrevious} onClick={() => {this.props.changeStep(step-1)}}>
+        <i className="left arrow icon"></i>
+        上一步
+      </button>
+      <button className="ui right labeled icon button" disabled={disabledNext} onClick={() => this.props.changeStep(step+1)}>
+        <i className="right arrow icon"></i>
+        下一步
+      </button>
+      </div>
+    );
+  }
+
+  render(){
+    const { step } = this.props;
+    return(
+      <div>
+        <div className="ui ordered steps">
+          {this.renderSteps(step)}
+        </div>
+        <div>
+          {this.renderButtons(step)}
+        </div>
       </div>
     );
   }

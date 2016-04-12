@@ -16,13 +16,13 @@ class App extends Component {
   }
 
   renderContent(state){
-    switch (state.stepReducer.step) {      
+    switch (state.stepReducer.step) {
       case 1:
       default:
         return <FileInput changeStep={this.props.stepActions.changeStep} loadFile={this.props.fileActions.loadFile} />;
         break;
       case 2:
-        return <TrackSelector content={state.fileInputReducer.content} />;
+        return <TrackSelector changeStep={this.props.stepActions.changeStep} content={state.fileInputReducer.content} />;
         break;
       case 3:
         return <SrtPreviewer />;
@@ -34,7 +34,7 @@ class App extends Component {
     const { state } = this.props;
     return (
       <div>
-        <Steps step={state.stepReducer.step} />
+        <Steps step={state.stepReducer.step} changeStep={this.props.stepActions.changeStep} />
         {this.renderContent(state)}
       </div>
     );

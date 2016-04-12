@@ -13,7 +13,7 @@ export default class TrackSelector extends Component {
           <tr key={`track${i}`}>
             <td><input type="checkbox" name="selectedTracks" value={i} defaultChecked={checked} /></td>
             <td>{track["$"].name}</td>
-            <td>{track.waveclip.length}</td>
+            <td>{(track.waveclip)? track.waveclip.length:'unknown'}</td>
             <td>{track["$"].channel}</td>
             <td>{track["$"].linked}</td>
             <td>{track["$"].rate}</td>
@@ -44,10 +44,6 @@ export default class TrackSelector extends Component {
             {this.renderTracks(this.props.content)}
           </tbody>
         </table>
-        <button className="ui right labeled icon button">
-          <i className="right arrow icon"></i>
-          Next
-        </button>
       </div>
     );
   }
