@@ -5,14 +5,31 @@ export default class TrackSelector extends Component {
     super(props);
   }
 
+  renderTracks(content){
+    let contentObject = JSON.parse(content);
+    return contentObject.project.wavetrack.map( (track, i) => {
+        return (
+          <tr key={`track${i}`}>
+            <td>{track["$"].name}</td>
+            <td>{track.waveclip.length}</td>
+            <td>{track["$"].channel}</td>
+            <td>{track["$"].linked}</td>
+            <td>{track["$"].rate}</td>
+            <td>{track["$"].mute}</td>
+            <td>{track["$"].solo}</td>
+          </tr>
+        );
+    });
+  }
+
   render(){
-    console.log(this.props.content);
     return(
       <div>
         <table className="ui celled striped table">
           <thead>
             <tr>
               <th>軌道名稱</th>
+              <th>擁有clip(s)數目</th>
               <th>channel</th>
               <th>linked</th>
               <th>rate</th>
@@ -21,14 +38,7 @@ export default class TrackSelector extends Component {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>4</td>
-              <td>4</td>
-            </tr>
+            {this.renderTracks(this.props.content)}
           </tbody>
         </table>
       </div>
