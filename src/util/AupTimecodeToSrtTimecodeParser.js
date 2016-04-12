@@ -7,14 +7,14 @@ export default function srtTimecodeParser(aupTimecode){
 
   const HHMMSS = secondToHHMMSS(decimalPart);
   let millisecond = '';
-  if(fractionalPart<100){
+  if(fractionalPart<100 && fractionalPart>=10){
     millisecond = '0'+fractionalPart.toString();
   }else if(fractionalPart<10){
     millisecond = '00'+fractionalPart.toString();
   }else {
     millisecond = fractionalPart.toString();
   }
-  
+
   return HHMMSS+','+ millisecond;
 }
 
