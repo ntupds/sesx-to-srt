@@ -38,6 +38,8 @@ function makeSrt(filteredArray){
         subtitle.aupEndTimecode = parseFloat(clip["$"].offset) + parseFloat(clip.sequence[0]["$"].numsamples / wavetrack["$"].rate);
         subtitle.srtEndTimecode = srtTimecodeParser(subtitle.aupEndTimecode);
         subtitle.defaultTag = wavetrack["$"].name + (cIndex+1);
+        subtitle.numsamples = clip.sequence[0].numsamples;
+        subtitle.rate = wavetrack["$"].rate;
 
         subtitlesArray.push(subtitle);
       });

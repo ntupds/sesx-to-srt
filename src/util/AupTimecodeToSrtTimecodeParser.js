@@ -1,6 +1,6 @@
 export default function srtTimecodeParser(aupTimecode){
   const shifts = 1000;
-  const roundToMillisecond = Math.round( parseFloat(aupTimecode) * shifts) / shifts;
+  const roundToMillisecond = (Math.round( parseFloat(aupTimecode) * shifts) / shifts).toFixed(3);
 
   const decimalPart = Math.floor(aupTimecode);
   const fractionalPart = parseInt(roundToMillisecond.toString().split(".")[1]);
