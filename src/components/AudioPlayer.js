@@ -32,7 +32,7 @@ class AudioPlayer extends Component {
   }
 
   componentWillReceiveProps(nextProps){
-    if(nextProps.startTime !== this.props.startTime){
+    if(nextProps.startTime !== this.props.startTime || nextProps.endTime !== this.props.endTime){
       this.state.audio.currentTime = nextProps.startTime;
       this.state.audio.play();
     }
