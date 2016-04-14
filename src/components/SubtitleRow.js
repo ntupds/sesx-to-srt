@@ -4,7 +4,8 @@ class SubtitleRow extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showEdit: false
+      showEdit: false,
+      warning: false
     };
   }
 
@@ -23,7 +24,11 @@ class SubtitleRow extends Component {
         </td>
       );
     } else{
-      return <td onClick={this.handleTextOnClick.bind(this)}>{this.props.text}</td>;
+      return (
+        <td onClick={this.handleTextOnClick.bind(this)}>
+          {(this.state.warning)? <span style={{color: 'red'}}>{this.props.text}</span>: <span>{this.props.text}</span>}
+        </td>
+      );
     }
   }
 
@@ -41,6 +46,9 @@ class SubtitleRow extends Component {
   submitEdit(text, index){
     this.setState({ showEdit: false });
     this.props.editSubtitleText(index, text);
+    this.setState({
+      warning: (text.length>12)
+    });
   }
 
   render() {
