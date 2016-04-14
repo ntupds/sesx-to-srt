@@ -4,8 +4,7 @@ class SubtitleRow extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showEdit: false,
-      tempText: props.text || ''
+      showEdit: false
     };
   }
 
@@ -15,36 +14,33 @@ class SubtitleRow extends Component {
       return (
         <td>
           <input type="text"
-            value={this.state.tempText}
-            onChange={this.handleTextOnChange.bind(this)}
-            onBlur={this.handleTextOnBlur.bind(this, index)}
-            onKeyDown={e => this.handleOnKeyDown(e, index)}
+            defaultValue={this.props.text}
+            onBlur={(e) => this.handleTextOnBlur(e, index)}
+            onKeyDown={(e) => this.handleOnKeyDown(e, index)}
             autoFocus={true}
+            style={{width:'100%'}}
           />
         </td>
       );
     } else{
-      return <td onClick={this.handleTextOnClick.bind(this)}>{this.state.tempText}</td>;
+      return <td onClick={this.handleTextOnClick.bind(this)}>{this.props.text}</td>;
     }
   }
 
   handleTextOnClick(){
     this.setState({ showEdit: true});
   }
-  handleTextOnChange(e){
-    this.setState({ tempText: e.target.value });
-  }
-  handleTextOnBlur(index){
-    this.submitEdit(index);
+  handleTextOnBlur(e, index){
+    this.submitEdit(e.target.value, index);
   }
   handleOnKeyDown(e, index){
-    if( e.which === 13 && this.state.tempText) {
-      this.submitEdit(index);
+    if( e.which === 13 && e.target.value) {
+      this.submitEdit(e.target.value, index);
     }
   }
-  submitEdit(index){
-    this.setState({ showEdit: false});
-    this.props.editSubtitleText(index, this.state.tempText);
+  submitEdit(text, index){
+    this.setState({ showEdit: false });
+    this.props.editSubtitleText(index, text);
   }
 
   render() {
@@ -71,7 +67,12 @@ class SubtitleRow extends Component {
 };
 
 SubtitleRow.propTypes = {
-  text: PropTypes.string.isRequired
+  editSubtitleText: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
+  text: PropTypes.string.isRequired,
+  srtStartTimecode: PropTypes.string.isRequired,
+  srtEndTimecode: PropTypes.string.isRequired,
+  defaultTag: PropTypes.string.isRequired
 };
 
 export default SubtitleRow;

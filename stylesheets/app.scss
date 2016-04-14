@@ -35,3 +35,7 @@ html, body{
 #progressBar{
 	background-color: $pimary-color;
 }
+
+table#srtTable{
+	table-layout: fixed;
+}

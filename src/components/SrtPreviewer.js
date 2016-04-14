@@ -6,9 +6,6 @@ import SubtitleRow from './SubtitleRow';
 export default class SrtPreviewer extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      showEdit: false
-    };
   }
 
   componentDidMount(){
@@ -63,14 +60,14 @@ export default class SrtPreviewer extends Component {
           <i className="download icon"></i>
           匯出
         </button>
-        <table className="ui celled striped table">
+        <table id="srtTable" className="ui celled striped table">
           <thead>
             <tr>
               <th>id</th>
               <th>起始時間</th>
               <th>結束時間</th>
               <th>字幕標籤</th>
-              <th>字幕內容</th>
+              <th width="50%">字幕內容</th>
             </tr>
           </thead>
           <tbody>
