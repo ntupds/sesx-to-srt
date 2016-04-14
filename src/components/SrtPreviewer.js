@@ -23,7 +23,7 @@ export default class SrtPreviewer extends Component {
       output += (subtitle.text)? subtitle.text : subtitle.defaultTag;
       output += '\r\n\r\n';
     });
-    
+
     let blob = new Blob([output], {type: 'text/srt'});
     let filename = '字幕.srt';
     if(window.navigator.msSaveOrOpenBlob) {
@@ -49,6 +49,7 @@ export default class SrtPreviewer extends Component {
             <td>{subtitle.srtStartTimecode}</td>
             <td>{subtitle.srtEndTimecode}</td>
             <td>{subtitle.defaultTag}</td>
+            <td>{subtitle.text}</td>
           </tr>
           );
       }
@@ -69,6 +70,7 @@ export default class SrtPreviewer extends Component {
               <th>id</th>
               <th>起始時間</th>
               <th>結束時間</th>
+              <th>字幕標籤</th>
               <th>字幕內容</th>
             </tr>
           </thead>

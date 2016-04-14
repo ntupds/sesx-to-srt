@@ -21,6 +21,14 @@ export default function counter(state = initialState, action) {
       return Object.assign({}, state, {
         subtitles: makeSrt(action.filteredArray)
       });
+    case types.EDIT_SUBTITLE_TEXT:
+      const editedSubtitles = state.subtitles.map( (subtitle, index) => {
+        return index === action.key ?
+          Object.assign({}, subtitle, { text: action.text }) : subtitle;
+      });
+      return Object.assign({}, state, {
+        subtitles: editedSubtitles
+      });
     default:
       return state;
   }
@@ -40,6 +48,7 @@ function makeSrt(filteredArray){
         subtitle.defaultTag = wavetrack["$"].name + (cIndex+1);
         subtitle.numsamples = clip.sequence[0].numsamples;
         subtitle.rate = wavetrack["$"].rate;
+        subtitle.text = '';
 
         subtitlesArray.push(subtitle);
       });

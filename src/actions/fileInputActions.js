@@ -20,3 +20,11 @@ export function makeSrt(filteredArray) {
     filteredArray
   }
 }
+
+export function editSubtitleText(key, text){
+  return {
+    type: types.EDIT_SUBTITLE_TEXT,
+    key,
+    text
+  }
+}
