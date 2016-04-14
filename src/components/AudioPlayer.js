@@ -3,6 +3,11 @@ import React, { Component } from 'react';
 class AudioPlayer extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      startTime: props.startTime,
+      endTime: props.endTime,
+      audio: null
+    };
   }
 
   handleFile(e){
@@ -11,8 +16,17 @@ class AudioPlayer extends Component {
     const URL = window.URL || window.webkitURL;
     const fileURL = URL.createObjectURL(file);
 
-    const audioNode = document.getElementById('audio');
-    audioNode.src = fileURL;
+    this.state.audio.src = fileURL;
+  }
+
+  componentDidMount(){
+    this.state.audio = document.getElementById('audio');
+
+    this.state.audio.addEventListener('timeupdate', () => {
+        if (this.state.endTime && this.state.audio.currentTime >= this.state.endTime) {
+            this.audio.pause();
+        }
+    });
   }
 
   render(){

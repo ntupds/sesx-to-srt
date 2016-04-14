@@ -7,6 +7,10 @@ import AudioPlayer from './AudioPlayer';
 export default class SrtPreviewer extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      startTime: null,
+      endTime: null
+    };
   }
 
   componentDidMount(){
@@ -47,7 +51,11 @@ export default class SrtPreviewer extends Component {
     return subtitlesArray.map( (subtitle, index) =>
       {
         return (
-          <SubtitleRow key={index} index={index} {...subtitle} editSubtitleText={self.props.editSubtitleText} />
+          <SubtitleRow
+            key={index}
+            index={index}
+            {...subtitle}
+            editSubtitleText={self.props.editSubtitleText} />
         );
       }
     );
@@ -61,7 +69,9 @@ export default class SrtPreviewer extends Component {
           <i className="download icon"></i>
           匯出
         </button>
-        <AudioPlayer />
+        <AudioPlayer
+          startTime={this.state.startTime}
+          endTime={this.state.endTime} />
         <table id="srtTable" className="ui celled striped table">
           <thead>
             <tr>

@@ -51,6 +51,11 @@ class SubtitleRow extends Component {
     });
   }
 
+  onTimecodeClick(){
+    //window.startTime = this.props.aupStartTimecode;
+    //window.endTime = this.props.aupEndTimecode;
+  }
+
   render() {
     const { index, srtStartTimecode, srtEndTimecode, defaultTag, text } = this.props;
     return (
@@ -58,10 +63,10 @@ class SubtitleRow extends Component {
         <td>
           {index+1}
         </td>
-        <td>
+        <td onClick={this.onTimecodeClick.bind(this)}>
           {srtStartTimecode}
         </td>
-        <td>
+        <td onClick={this.onTimecodeClick.bind(this)}>
           {srtEndTimecode}
         </td>
         <td>
