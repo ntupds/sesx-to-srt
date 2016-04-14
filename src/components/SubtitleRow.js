@@ -25,7 +25,7 @@ class SubtitleRow extends Component {
       );
     } else{
       return (
-        <td onClick={this.handleTextOnClick.bind(this)}>
+        <td className="text" onClick={this.handleTextOnClick.bind(this)}>
           {(this.state.warning)? <span style={{color: 'red'}}>{this.props.text}</span>: <span>{this.props.text}</span>}
         </td>
       );
@@ -62,10 +62,10 @@ class SubtitleRow extends Component {
         <td>
           {index+1}
         </td>
-        <td onClick={this.onTimecodeClick.bind(this)}>
+        <td className="timecode" onClick={this.onTimecodeClick.bind(this)}>
           {srtStartTimecode}
         </td>
-        <td onClick={this.onTimecodeClick.bind(this)}>
+        <td className="timecode" onClick={this.onTimecodeClick.bind(this)}>
           {srtEndTimecode}
         </td>
         <td>

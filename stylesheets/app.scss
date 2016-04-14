@@ -38,4 +38,7 @@ html, body{
 
 table#srtTable{
 	table-layout: fixed;
+	.timecode, .text{
+		cursor: pointer;
+	}
 }
