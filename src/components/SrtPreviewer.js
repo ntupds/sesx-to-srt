@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import srtTimecodeParser from '../util/AupTimecodeToSrtTimecodeParser';
 
+import SubtitleRow from './SubtitleRow';
+
 export default class SrtPreviewer extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      showEdit: false
+    };
   }
 
   componentDidMount(){
@@ -40,18 +45,12 @@ export default class SrtPreviewer extends Component {
   }
 
   renderRows(subtitlesArray){
-
+    let self = this;
     return subtitlesArray.map( (subtitle, index) =>
       {
         return (
-          <tr key={index}>
-            <td>{index+1}</td>
-            <td>{subtitle.srtStartTimecode}</td>
-            <td>{subtitle.srtEndTimecode}</td>
-            <td>{subtitle.defaultTag}</td>
-            <td>{subtitle.text}</td>
-          </tr>
-          );
+          <SubtitleRow key={index} index={index} {...subtitle} editSubtitleText={self.props.editSubtitleText} />
+        );
       }
     );
 

@@ -25,7 +25,7 @@ class App extends Component {
         return <TrackSelector {...state.fileInputReducer} selectTracks={this.props.fileActions.selectTracks} changeStep={this.props.stepActions.changeStep} />;
         break;
       case 3:
-        return <SrtPreviewer makeSrt={this.props.fileActions.makeSrt} {...this.props.stepActions} {...state.fileInputReducer} />;
+        return <SrtPreviewer editSubtitleText={this.props.fileActions.editSubtitleText} makeSrt={this.props.fileActions.makeSrt} {...this.props.stepActions} {...state.fileInputReducer} />;
         break;
     }
   }
