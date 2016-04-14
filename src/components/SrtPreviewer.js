@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import srtTimecodeParser from '../util/AupTimecodeToSrtTimecodeParser';
 
 import SubtitleRow from './SubtitleRow';
+import AudioPlayer from './AudioPlayer';
 
 export default class SrtPreviewer extends Component {
   constructor(props){
@@ -60,6 +61,7 @@ export default class SrtPreviewer extends Component {
           <i className="download icon"></i>
           匯出
         </button>
+        <AudioPlayer />
         <table id="srtTable" className="ui celled striped table">
           <thead>
             <tr>
