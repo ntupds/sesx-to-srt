@@ -9,6 +9,7 @@ import SrtPreviewer from '../components/SrtPreviewer';
 
 import * as fileInputActions from '../actions/fileInputActions';
 import * as stepActions from '../actions/stepActions';
+import * as audioActions from '../actions/audioActions';
 
 class App extends Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class App extends Component {
         return <TrackSelector {...state.fileInputReducer} selectTracks={this.props.fileActions.selectTracks} changeStep={this.props.stepActions.changeStep} />;
         break;
       case 3:
-        return <SrtPreviewer editSubtitleText={this.props.fileActions.editSubtitleText} makeSrt={this.props.fileActions.makeSrt} {...this.props.stepActions} {...state.fileInputReducer} />;
+        return <SrtPreviewer setPlayTime={this.props.audioActions.setPlayTime} editSubtitleText={this.props.fileActions.editSubtitleText} makeSrt={this.props.fileActions.makeSrt} {...this.props.stepActions} {...state.fileInputReducer} {...state.audioReducer} />;
         break;
     }
   }
@@ -48,6 +49,7 @@ export default connect(state => ({
   }),
   (dispatch) => ({
     fileActions: bindActionCreators(fileInputActions, dispatch),
-    stepActions: bindActionCreators(stepActions, dispatch)
+    stepActions: bindActionCreators(stepActions, dispatch),
+    audioActions: bindActionCreators(audioActions, dispatch)
   })
 )(App);

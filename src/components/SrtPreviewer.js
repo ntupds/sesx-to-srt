@@ -55,6 +55,7 @@ export default class SrtPreviewer extends Component {
             key={index}
             index={index}
             {...subtitle}
+            setPlayTime={self.props.setPlayTime}
             editSubtitleText={self.props.editSubtitleText} />
         );
       }
@@ -70,8 +71,8 @@ export default class SrtPreviewer extends Component {
           匯出
         </button>
         <AudioPlayer
-          startTime={this.state.startTime}
-          endTime={this.state.endTime} />
+          startTime={this.props.startTime}
+          endTime={this.props.endTime} />
         <table id="srtTable" className="ui celled striped table">
           <thead>
             <tr>

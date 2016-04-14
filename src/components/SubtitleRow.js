@@ -52,8 +52,7 @@ class SubtitleRow extends Component {
   }
 
   onTimecodeClick(){
-    //window.startTime = this.props.aupStartTimecode;
-    //window.endTime = this.props.aupEndTimecode;
+    this.props.setPlayTime( this.props.aupStartTimecode, this.props.aupEndTimecode);
   }
 
   render() {
@@ -80,6 +79,7 @@ class SubtitleRow extends Component {
 };
 
 SubtitleRow.propTypes = {
+  setPlayTime: PropTypes.func.isRequired,
   editSubtitleText: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,
   text: PropTypes.string.isRequired,

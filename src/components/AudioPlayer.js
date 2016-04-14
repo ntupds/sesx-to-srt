@@ -4,8 +4,6 @@ class AudioPlayer extends Component {
   constructor(props){
     super(props);
     this.state = {
-      startTime: props.startTime,
-      endTime: props.endTime,
       audio: null
     };
   }
@@ -22,11 +20,20 @@ class AudioPlayer extends Component {
   componentDidMount(){
     this.state.audio = document.getElementById('audio');
 
-    this.state.audio.addEventListener('timeupdate', () => {
-        if (this.state.endTime && this.state.audio.currentTime >= this.state.endTime) {
-            this.audio.pause();
+    const { audio } = this.state;
+
+    let self = this;
+
+    audio.addEventListener('timeupdate', () => {
+        if (self.props.endTime && audio.currentTime >= self.props.endTime) {
+            audio.pause();
         }
     });
+  }
+
+  componentWillReceiveProps(nextProps){
+    this.state.audio.currentTime = nextProps.startTime;
+    this.state.audio.play();
   }
 
   render(){
