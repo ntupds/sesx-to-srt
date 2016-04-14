@@ -22,7 +22,7 @@ export default class SrtPreviewer extends Component {
     this.props.subtitles.map((subtitle, index) => {
       output += (index+1) + '\r\n';
       output += (subtitle.srtStartTimecode) + ' --> ' + (subtitle.srtEndTimecode) + '\r\n';
-      output += (subtitle.text)? subtitle.text : subtitle.defaultTag;
+      output += (subtitle.text.length>0)? subtitle.text : subtitle.defaultTag;
       output += '\r\n\r\n';
     });
 
