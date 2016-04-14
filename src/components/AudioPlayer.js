@@ -36,6 +36,10 @@ class AudioPlayer extends Component {
     this.state.audio.play();
   }
 
+  handlePlayAll(){
+    this.props.setPlayTime(0, this.state.audio.duration);
+  }
+
   render(){
     return(
       <div>
@@ -43,6 +47,7 @@ class AudioPlayer extends Component {
           這位社員大大，(空一格)貴瀏覽器不支援HTML5 AUDIO QQ
           該不會是用IE吧？！請愛用Chrome或Firefox～
         </audio>
+        <button className="positive small ui button" onClick={this.handlePlayAll.bind(this)}>播放全部</button>
         <input accept="audio/*" type="file" onChange={this.handleFile.bind(this)} />
       </div>
     );

@@ -71,6 +71,7 @@ export default class SrtPreviewer extends Component {
           匯出
         </button>
         <AudioPlayer
+          setPlayTime={this.props.setPlayTime}
           startTime={this.props.startTime}
           endTime={this.props.endTime} />
         <table id="srtTable" className="ui celled striped table">
