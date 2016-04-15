@@ -15,10 +15,11 @@ export default class SrtPreviewer extends Component {
 
   componentDidMount(){
     const contentObject = JSON.parse(this.props.content);
-    const wavetrackArray = contentObject.project.wavetrack;
-    const filteredArray = wavetrackArray.filter((object, index)=>{
+    const trackArray = contentObject.sesx.session[0].tracks[0].audioTrack;
+    const filteredArray = trackArray.filter((object, index)=>{
       return this.props.selectedTracks[index];
     });
+    this.props.setSampleRate(contentObject.sesx.session[0]["$"].sampleRate);
     this.props.makeSrt(filteredArray);
   }
 

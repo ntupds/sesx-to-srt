@@ -4,7 +4,8 @@ import srtTimecodeParser from '../util/AupTimecodeToSrtTimecodeParser';
 const initialState = {
   content: '',
   selectedTracks: [],
-  subtitles: []
+  subtitles: [],
+  sampleRate: 0
 };
 
 export default function counter(state = initialState, action) {
@@ -16,6 +17,10 @@ export default function counter(state = initialState, action) {
     case types.SELECT_TRACKS:
       return Object.assign({}, state, {
         selectedTracks: action.selectedTracks
+      });
+    case types.SET_SAMPLE_RATE:
+      return Object.assign({}, state, {
+        sampleRate: action.sampleRate
       });
     case types.MAKE_SRT:
       return Object.assign({}, state, {
@@ -36,19 +41,19 @@ export default function counter(state = initialState, action) {
 
 function makeSrt(filteredArray){
   let subtitlesArray = [];
-  filteredArray.map( (wavetrack, wIndex) =>
+  filteredArray.map( (track, wIndex) =>
     {
-      wavetrack.waveclip.map( (clip, cIndex) => {
+      track.audioClip.map( (clip, cIndex) => {
         let subtitle = {};
 
-        subtitle.aupStartTimecode = parseFloat(clip["$"].offset);
-        subtitle.srtStartTimecode = srtTimecodeParser(clip["$"].offset);
-        subtitle.aupEndTimecode = parseFloat(clip["$"].offset) + parseFloat(clip.sequence[0]["$"].numsamples / wavetrack["$"].rate);
-        subtitle.srtEndTimecode = srtTimecodeParser(subtitle.aupEndTimecode);
-        subtitle.defaultTag = wavetrack["$"].name + (cIndex+1);
+        subtitle.sesxStartPoint = parseInt(clip["$"]);
+        subtitle.srtStartTimecode = srtTimecodeParser();
+        subtitle.sesxEndPoint = parseInt();
+        subtitle.srtEndTimecode = srtTimecodeParser();
+        subtitle.defaultTag = track["$"].name + (cIndex+1);
         subtitle.numsamples = clip.sequence[0].numsamples;
-        subtitle.rate = wavetrack["$"].rate;
-        subtitle.text = '';
+        subtitle.rate = track["$"].rate;
+        subtitle.text = (name)? name : '';
 
         subtitlesArray.push(subtitle);
       });

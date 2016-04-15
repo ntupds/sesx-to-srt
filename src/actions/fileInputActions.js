@@ -14,6 +14,13 @@ export function selectTracks(selectedTracks) {
   };
 }
 
+export function setSampleRate(sampleRate){
+  return {
+    type: types.SET_SAMPLE_RATE,
+    sampleRate
+  };
+}
+
 export function makeSrt(filteredArray) {
   return {
     type: types.MAKE_SRT,
