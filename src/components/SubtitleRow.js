@@ -52,7 +52,7 @@ class SubtitleRow extends Component {
   }
 
   onTimecodeClick(){
-    this.props.setPlayTime( this.props.aupStartTimecode, this.props.aupEndTimecode);
+    this.props.setPlayTime( this.props.startSecond, this.props.endSecond);
   }
 
   render() {

@@ -52,10 +52,14 @@ function makeSrt(filteredArray, sampleRate){
       track.audioClip.map( (clip, cIndex) => {
         let subtitle = {};
 
+        subtitle.startSecond = clip["$"].startPoint / sampleRate;
         subtitle.sesxStartPoint = parseInt(clip["$"].startPoint);
         subtitle.srtStartTimecode = srtTimecodeParser(parseInt(clip["$"].startPoint) ,sampleRate);
+
+        subtitle.endSecond = clip["$"].endPoint / sampleRate;
         subtitle.sesxEndPoint = parseInt(clip["$"].endPoint);
         subtitle.srtEndTimecode = srtTimecodeParser(parseInt(clip["$"].endPoint), sampleRate);
+
         subtitle.defaultTag = track.trackParameters[0].name[0] + (cIndex+1);
         subtitle.text = (clip["$"].name)? clip["$"].name : '';
 
