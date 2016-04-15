@@ -34,7 +34,6 @@ export default class TrackSelector extends Component {
     let self = this;
     let contentObject = JSON.parse(content);
     return contentObject.sesx.session[0].tracks[0].audioTrack.map( (track, i) => {
-      console.log(track);
       return (
         <tr key={`track${i}`}>
           <td>
