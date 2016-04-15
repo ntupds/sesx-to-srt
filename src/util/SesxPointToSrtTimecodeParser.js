@@ -1,9 +1,8 @@
-export default function srtTimecodeParser(aupTimecode){
-  const shifts = 1000;
-  const roundToMillisecond = (Math.round( parseFloat(aupTimecode) * shifts) / shifts).toFixed(3);
+export default function srtTimecodeParser(sesxPoint, sampleRate){
+  const timecode = (sesxPoint / sampleRate).toFixed(3);
 
-  const decimalPart = Math.floor(aupTimecode);
-  const fractionalPart = parseInt(roundToMillisecond.toString().split(".")[1]);
+  const decimalPart = Math.floor(timecode);
+  const fractionalPart = parseInt(timecode.toString().split(".")[1]);
 
   const HHMMSS = secondToHHMMSS(decimalPart);
   let millisecond = '';
