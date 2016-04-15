@@ -1,8 +1,8 @@
 {
-  "name": "aup-to-srt",
-  "productName": "NTUPDS aup to srt",
-  "version": "0.1.0",
-  "description": "Generate a srt file from aup file.  This is an app designed for NTUPDS.",
+  "name": "ntupds-sesx-to-srt",
+  "productName": "NTUPDS sesx to srt",
+  "version": "1.0.0",
+  "description": "Generate a srt file from sesx file (Adobe Audition).  This is an app designed for NTUPDS.",
   "main": "index.js",
   "scripts": {
     "start": "node devServer.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/erwaiyang/aup-to-srt-for-NTUPDS.git"
+    "url": "git+https://github.com/erwaiyang/sesx-to-srt-for-NTUPDS.git"
   },
   "author": {
     "name": "erwaiyang(慕羽)",
@@ -22,9 +22,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/erwaiyang/aup-to-srt-for-NTUPDS/issues"
+    "url": "https://github.com/erwaiyang/sesx-to-srt-for-NTUPDS/issues"
   },
-  "homepage": "https://github.com/erwaiyang/aup-to-srt-for-NTUPDS#readme",
+  "homepage": "https://github.com/erwaiyang/sesx-to-srt-for-NTUPDS#readme",
   "devDependencies": {
     "babel-core": "^6.6.5",
     "babel-jest": "^9.0.3",
