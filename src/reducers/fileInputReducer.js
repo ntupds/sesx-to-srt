@@ -41,8 +41,14 @@ export default function counter(state = initialState, action) {
 
 function makeSrt(filteredArray, sampleRate){
   let subtitlesArray = [];
-  filteredArray.map( (track, wIndex) =>
+  for(var wIndex = 0; wIndex<filteredArray.length; wIndex++)
     {
+      let track = filteredArray[wIndex];
+
+      if(!track.audioClip || track.audioClip.length===0){
+        continue;
+      }
+
       track.audioClip.map( (clip, cIndex) => {
         let subtitle = {};
 
@@ -55,7 +61,8 @@ function makeSrt(filteredArray, sampleRate){
 
         subtitlesArray.push(subtitle);
       });
-  });
+  }
+
   return subtitlesArray.sort((a,b) => {
     if (a.sesxStartPoint < b.sesxStartPoint)
       return -1;

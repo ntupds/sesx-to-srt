@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import srtTimecodeParser from '../util/AupTimecodeToSrtTimecodeParser';
 
 import SubtitleRow from './SubtitleRow';
 import AudioPlayer from './AudioPlayer';
