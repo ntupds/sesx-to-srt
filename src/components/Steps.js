@@ -6,7 +6,7 @@ export default class Steps extends Component {
     this.state = {
       stepsInfo: [
         {
-          title: '匯入aup檔',
+          title: '匯入sesx檔',
           description: '請點擊以下區域或直接拖曳檔案'
         },
         {
