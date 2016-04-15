@@ -48,7 +48,7 @@ export default class FileInput extends Component {
             <div className="progress">{this.state.progress}%</div>
           </div>
         </div>
-        <Dropzone id="dropzone" style={{width: '100%'}} accept="application/x-aup" multiple={false} onDrop={this.onDrop.bind(this)}>
+        <Dropzone id="dropzone" style={{width: '100%'}} accept="application/x-sesx" multiple={false} onDrop={this.onDrop.bind(this)}>
           <div>
             <span>點擊以選擇檔案或直接拖曳至此</span>
           </div>

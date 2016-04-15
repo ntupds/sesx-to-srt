@@ -9,10 +9,10 @@ export default class TrackSelector extends Component {
       };
     }else{
       const contentObject = JSON.parse(props.content);
-      const tracks = contentObject.project.wavetrack.length;
+      const tracks = contentObject.sesx.session[0].tracks[0].audioTrack.length;
       const checkedBoxes = [];
       for(var i = 0; i<tracks; i++){
-        checkedBoxes.push( (i%2===0)? true : false );
+        checkedBoxes.push( true );
       }
       this.state = {
         checkedBoxes
@@ -33,7 +33,8 @@ export default class TrackSelector extends Component {
   renderTracks(content){
     let self = this;
     let contentObject = JSON.parse(content);
-    return contentObject.project.wavetrack.map( (track, i) => {
+    return contentObject.sesx.session[0].tracks[0].audioTrack.map( (track, i) => {
+      console.log(track);
       return (
         <tr key={`track${i}`}>
           <td>
@@ -44,13 +45,10 @@ export default class TrackSelector extends Component {
               onChange={self.onCheckboxChange.bind(this, i)}
             />
           </td>
-          <td>{track["$"].name}</td>
-          <td>{(track.waveclip)? track.waveclip.length:'unknown'}</td>
-          <td>{track["$"].channel}</td>
-          <td>{track["$"].linked}</td>
-          <td>{track["$"].rate}</td>
-          <td>{track["$"].mute}</td>
-          <td>{track["$"].solo}</td>
+          <td>{track["$"].id}</td>
+          <td>{track.trackParameters[0].name[0]}</td>
+          <td>{track.audioClip? track.audioClip.length : 'unknown'}</td>
+          <td>{track.trackAudioParameters[0]["$"].audioChannelType}</td>
         </tr>
       );
     });
@@ -63,13 +61,10 @@ export default class TrackSelector extends Component {
           <thead>
             <tr>
               <th></th>
+              <th>id</th>
               <th>軌道名稱</th>
-              <th>擁有clip(s)數目</th>
-              <th>channel</th>
-              <th>linked</th>
-              <th>rate</th>
-              <th>mute</th>
-              <th>solo</th>
+              <th>clip(s)數目</th>
+              <th>channel type</th>
             </tr>
           </thead>
           <tbody>
