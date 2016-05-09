@@ -8,7 +8,7 @@ const initialState = {
   sampleRate: 0
 };
 
-export default function counter(state = initialState, action) {
+export default function fileInputReducer(state = initialState, action) {
   switch (action.type) {
     case types.LOAD_FILE:
       return Object.assign({}, state, {

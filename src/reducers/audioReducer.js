@@ -5,7 +5,7 @@ const initialState = {
   endTime: null
 };
 
-export default function counter(state = initialState, action) {
+export default function audioReducer(state = initialState, action) {
   switch (action.type) {
     case types.SET_PLAY_TIME:
       return {
